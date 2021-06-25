@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('home.app')
 
 @section('content')
 
@@ -9,13 +9,11 @@
             <div class="col-xl-5 offset-xl-3">
 
                 <div class="login-register-page">
-                    <!-- Welcome Text -->
                     <div class="welcome-text">
                         <h3 style="font-size: 26px;">¡Creemos tu cuenta!</h3>
                         <span>¿Ya tienes una cuenta? <a href="{{ route('login') }}">¡Iniciar sesión!</a></span>
                     </div>
 
-                    <!-- Account Type -->
                     <div class="account-type">
                         <div onclick="modoUser()">
                             <input type="radio" name="account-type-radio" id="freelancer-radio" class="account-type-radio"
@@ -31,16 +29,15 @@
                         </div>
                     </div>
 
-                    <!-- Form -->
                     <form method="POST" action="{{ route('register') }}" id="register_account">
                         @csrf
 
-                        <input type="hidden" name="business" id="business" value="0">
+                        <input type="hidden" name="role" id="role" value="1">
 
                         <div class="input-with-icon-left">
                             <i class="icon-feather-user"></i>
                             <input type="text" class="input-text with-border @error('nombre') is-invalid @enderror"
-                                name="nombre" id="nombre" placeholder="Nombre" required />
+                                name="nombre" id="nombre" placeholder="Nombre" value="{{ old('nombre') }}" required />
 
                             @error('nombre')
                                 <span class="invalid-feedback" role="alert">
@@ -52,7 +49,8 @@
                         <div class="input-with-icon-left" id="apellido_div">
                             <i class="icon-feather-users"></i>
                             <input type="text" class="input-text with-border @error('apellidos') is-invalid @enderror"
-                                name="apellidos" id="apellidos" placeholder="Apellidos" required />
+                                name="apellidos" id="apellidos" placeholder="Apellidos" value="{{ old('apellidos') }}"
+                                required />
 
                             @error('apellidos')
                                 <span class="invalid-feedback" role="alert">
@@ -64,7 +62,8 @@
                         <div class="input-with-icon-left" id="idenf_div" style="display: none">
                             <i class="icon-line-awesome-certificate"></i>
                             <input type="text" class="input-text with-border @error('identif') is-invalid @enderror"
-                                name="identif" id="identif" placeholder="Identificación fiscal (C.I.F o N.I.F)" required />
+                                name="identif" id="identif" placeholder="Identificación fiscal (C.I.F o N.I.F)" required
+                                value="{{ old('identif') }}" />
 
                             @error('identif')
                                 <span class="invalid-feedback" role="alert">
@@ -76,7 +75,8 @@
                         <div class="input-with-icon-left">
                             <i class="icon-material-baseline-mail-outline"></i>
                             <input type="text" class="input-text with-border @error('email') is-invalid @enderror"
-                                name="email" id="email" placeholder="Dirección de correo" required />
+                                name="email" id="email" placeholder="Dirección de correo" required
+                                value="{{ old('email') }}" />
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -105,7 +105,8 @@
                         </div>
                     </form>
 
-                    <button onclick="register_account.submit()" class="button full-width button-sliding-icon ripple-effect margin-top-10" type="submit"
+                    <button onclick="register_account.submit()"
+                        class="button full-width button-sliding-icon ripple-effect margin-top-10" type="submit"
                         form="login-form">Registrar <i class="icon-material-outline-arrow-right-alt"></i></button>
                 </div>
 
@@ -121,7 +122,7 @@
     <script>
         function modoUser() {
             $('#nombre').attr('placeholder', 'Nombre')
-            $('#business').val('0')
+            $('#role').val('1')
 
             $('#idenf_div').hide()
             $('#apellido_div').show()
@@ -130,7 +131,7 @@
 
         function modoEmpre() {
             $('#nombre').attr('placeholder', 'Nombre de la empresa')
-            $('#business').val('1')
+            $('#role').val('2')
 
             $('#apellido_div').hide()
             $('#idenf_div').show()

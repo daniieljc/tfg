@@ -890,7 +890,7 @@ $(document).ready(function(){
 	
 	$(".range-slider").slider({
 		formatter: function(value) {
-			return currencyAttr + ThousandSeparator(parseInt(value[0])) + " - " + currencyAttr + ThousandSeparator(parseInt(value[1]));
+			return ThousandSeparator(parseInt(value[0])) + currencyAttr + " - " + ThousandSeparator(parseInt(value[1])) + currencyAttr;
 		}
 	});
 	

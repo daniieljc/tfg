@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('home.app')
 
 @section('content')
     <div class="margin-bottom-100"></div>

@@ -38,7 +38,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -51,6 +51,27 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
         ],
+
+        'portada' => [
+            'driver' => 'local',
+            'root' => storage_path('app/portada'),
+            'url' => env('APP_URL') . '/portada',
+            'visibility' => 'public',
+        ],
+        
+        'avatar' => [
+            'driver' => 'local',
+            'root' => storage_path('app/avatar'),
+            'url' => env('APP_URL') . '/avatar',
+            'visibility' => 'public',
+        ],
+
+        'cv' => [
+            'driver' => 'local',
+            'root' => storage_path('app/cv'),
+            'url' => env('APP_URL') . '/cv',
+            'visibility' => 'public',
+        ]
 
     ],
 

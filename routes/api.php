@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CategoriaArticulo;
 use App\Models\User;
 use App\Models\UserExtra;
 use Illuminate\Http\Request;

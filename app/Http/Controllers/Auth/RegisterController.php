@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\UserExtra;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -68,8 +70,8 @@ class RegisterController extends Controller
             'nombre' => $data['nombre'],
             'apellidos' => $data['apellidos'],
             'email' => $data['email'],
-            'business' => $data['business'],
-            'role' => 'user',
+            'role' =>  $data['role'],
+            'status' => 0,
             'password' => Hash::make($data['password']),
         ]);
     }
